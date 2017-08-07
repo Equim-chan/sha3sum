@@ -32,7 +32,7 @@ $ BUILD_ALL=1 go generate ekyu.moe/sha3sum
 Also, you may check the [release page](https://github.com/Equim-chan/sha3sum/releases) for handy binaries.
 
 ## Help
-```bash
+```plain
 $ sha128sum --help
 Usage: shake128sum [OPTION]... [FILE]...
 Print or check SHAKE-128 checksums.
