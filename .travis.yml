@@ -1,9 +1,10 @@
 language: go
 sudo: false
 go:
-  - 1.7
   - 1.8
+  - 1.8.3
 install:
+  - go get -t ./...
   - go generate
   - go get -u github.com/mitchellh/gox && env BUILD_ALL=1 go generate
 script:
