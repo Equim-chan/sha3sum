@@ -30,13 +30,22 @@ func main() {
 	}
 
 	_, buildAll := os.LookupEnv("BUILD_ALL")
+
 	for _, item := range target {
+		ldflags := "-X main.TITLE=" + item[0] +
+			" -X main.ALGO_NAME=" + item[1] +
+			" -X main.VERSION=" + VERSION +
+			" -s -w"
 		var cmd *exec.Cmd
 		if buildAll {
+			// `go generate` sets $GOOS and $GOARCH automatically.
+			// To enable gox, we must unset these.
+			os.Unsetenv("GOOS")
+			os.Unsetenv("GOARCH")
+			os.Unsetenv("CGO_ENABLED")
 			args := []string{
 				"-output", GOPATH + "/bin/{{.OS}}_{{.Arch}}/" + item[0],
-				"-ldflags",
-				"-X main.TITLE=" + item[0] + " -X main.ALGO_NAME=" + item[1] + " -X main.VERSION=" + VERSION + " -s -w",
+				"-ldflags", ldflags,
 				"ekyu.moe/sha3sum",
 			}
 			cmd = exec.Command("gox", args...)
@@ -47,18 +56,15 @@ func main() {
 			}
 			args := []string{
 				"build", "-o", GOPATH + "/bin/" + item[0] + GOEXE,
-				"-ldflags",
-				"-X main.TITLE=" + item[0] + " -X main.ALGO_NAME=" + item[1] + " -X main.VERSION=" + VERSION + " -s -w",
+				"-ldflags", ldflags,
 				"ekyu.moe/sha3sum",
 			}
 			cmd = exec.Command("go", args...)
 		}
-		stdoutStderr, err := cmd.CombinedOutput()
-		if err != nil {
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		if err := cmd.Run(); err != nil {
 			fmt.Fprintln(os.Stderr, "build error: "+err.Error())
-		}
-		if len(stdoutStderr) > 0 {
-			fmt.Println(string(stdoutStderr))
 		}
 	}
 }
