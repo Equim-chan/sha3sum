@@ -19,6 +19,8 @@ Quick install:
 ```bash
 $ go get -d -u ekyu.moe/sha3sum/...
 $ go generate ekyu.moe/sha3sum
+# sha3sum will then be installed into $GOPATH/bin
+$ export PATH=$PATH:$GOPATH/bin
 $ echo -n "Hello, 世界" | sha3-224sum
 ee346b66418f901d68c35fc02d25d5a3cf8ee0fcea32c3ded16b82d0  -
 ```
@@ -29,7 +31,7 @@ $ go get -u github.com/mitchellh/gox
 $ BUILD_ALL=1 go generate ekyu.moe/sha3sum
 ```
 
-Also, you may check the [release page](https://github.com/Equim-chan/sha3sum/releases) for handy binaries.
+__You can also check the [release page](https://github.com/Equim-chan/sha3sum/releases) for handy binaries.__
 
 ## Help
 ```plain
