@@ -17,7 +17,7 @@ It covers the following utilities:
 ## Install
 Quick install:
 ```bash
-$ go get -u ekyu.moe/sha3sum/...
+$ go get -d -u ekyu.moe/sha3sum/...
 $ go generate ekyu.moe/sha3sum
 $ echo -n "Hello, 世界" | sha3-224sum
 ee346b66418f901d68c35fc02d25d5a3cf8ee0fcea32c3ded16b82d0  -

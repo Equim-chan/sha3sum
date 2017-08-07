@@ -3,6 +3,7 @@ sudo: false
 go:
   - 1.8
   - 1.8.3
+go_import_path: ekyu.moe/sha3sum
 install:
   - go get -t ./...
   - go generate
