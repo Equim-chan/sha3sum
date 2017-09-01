@@ -1,4 +1,4 @@
-package sha3cli
+package sha3cli // import "ekyu.moe/sha3sum/sha3cli"
 
 import (
 	"flag"

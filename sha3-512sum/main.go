@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"ekyu.moe/sha3sum.v2/sha3cli"
+	"ekyu.moe/sha3sum/sha3cli"
 	"golang.org/x/crypto/sha3"
 )
 

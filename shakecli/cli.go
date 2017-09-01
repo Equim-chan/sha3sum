@@ -1,4 +1,4 @@
-package shakecli
+package shakecli // import "ekyu.moe/sha3sum/shakecli"
 
 import (
 	"flag"
