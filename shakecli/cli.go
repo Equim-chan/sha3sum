@@ -44,6 +44,7 @@ func Run(hfunc func() sha3.ShakeHash, bits int) int {
 	usage := "Usage: " + title + ` [OPTION]... [FILE]...
 Print or check ` + algoName + ` checksums.
 With no FILE, or when FILE is -, read standard input.
+
   -s, --size           length of output (bytes) for ` + algoName + `, default 32
   -c, --check          read ` + algoName + ` sums from the FILEs and check them
 
