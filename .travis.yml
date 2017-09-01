@@ -8,7 +8,6 @@ go:
 go_import_path: ekyu.moe/sha3sum
 install:
   - go get -t ./...
-  - go generate
   - go get -u github.com/mitchellh/gox && gox -ldflags "-s -w" -output release/{{.OS}}_{{.Arch}}/... ekyu.moe/sha3sum/...
 script:
   - diff -u <(echo -n) <(gofmt -d .)
