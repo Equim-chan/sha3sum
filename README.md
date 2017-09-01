@@ -17,25 +17,18 @@ It covers the following utilities:
 ## Install
 Quick install:
 ```bash
-$ go get -d -u ekyu.moe/sha3sum/...
-$ go generate ekyu.moe/sha3sum
-# sha3sum will then be installed into $GOPATH/bin
+$ go get -u ekyu.moe/sha3sum/...
+# sha3sum will then be installed under $GOPATH/bin
 $ export PATH=$PATH:$GOPATH/bin
 $ echo -n "Hello, 世界" | sha3-224sum
 ee346b66418f901d68c35fc02d25d5a3cf8ee0fcea32c3ded16b82d0  -
-```
-
-Build binaries for all platforms using gox:
-```bash
-$ go get -u github.com/mitchellh/gox
-$ BUILD_ALL=1 go generate ekyu.moe/sha3sum
 ```
 
 __You can also check the [release page](https://github.com/Equim-chan/sha3sum/releases) for handy binaries.__
 
 ## Help
 ```plain
-$ sha128sum --help
+$ shake128sum --help
 Usage: shake128sum [OPTION]... [FILE]...
 Print or check SHAKE-128 checksums.
 With no FILE, or when FILE is -, read standard input.
@@ -49,9 +42,8 @@ The following three options are useful only when verifying checksums:
       --status         don't output anything, status code shows success
 
   -h, --help     display this help and exit
-      --version  output version information and exit
 
-The sums are computed as described in FIPS-180-4.
+The sums are computed as described in FIPS-202.
 When checking, the input should be a former output of this program.
 The default mode is to print a line with checksum, a space,
 and name for each FILE.
