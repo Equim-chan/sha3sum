@@ -69,6 +69,7 @@ func verifyChksumFile(chksumFilename string) ([4]int8, error) {
 }
 
 func runVerify(filelist []string) int {
+	ret := 0
 	var unmatchErrCount uint64 = 0
 	var failReadErrCount uint64 = 0
 	var wrongFormatErrCount uint64 = 0
@@ -95,8 +96,8 @@ func runVerify(filelist []string) int {
 			fmt.Fprintf(errWriter, "WARNING: %d line(s) is improperly formatted\n", wrongFormatErrCount)
 		}
 
-		return 1
+		ret = 1
 	}
 
-	return 0
+	return ret
 }
